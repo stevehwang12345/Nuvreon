@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "Nuvreon",
-  url: "https://nuvreon.vercel.app",
+  url: "https://www.nuvreon.com",
   description:
     "Nuvreon builds AI-powered software platforms for robot control, influencer analytics, and synthetic data — transforming data into intelligent operational systems.",
   descriptionKo:
