@@ -122,14 +122,16 @@ export default function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 pointer-events-none"
       >
-        <motion.div
+        <motion.button
+          onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
+          className="pointer-events-auto cursor-pointer hover:text-accent transition-colors"
         >
           <ArrowDown size={20} className="text-muted" />
-        </motion.div>
+        </motion.button>
       </motion.div>
     </section>
   );

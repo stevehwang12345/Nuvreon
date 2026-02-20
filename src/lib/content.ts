@@ -348,12 +348,22 @@ export const content = {
           en: "Explore collaboration opportunities in AI and software integration.",
           ko: "AI 및 소프트웨어 분야의 협업 기회를 함께 모색합니다.",
         },
+        subject: { en: "[Partnership] Collaboration Inquiry", ko: "[파트너십] 협업 문의" },
+        body: {
+          en: "Hello Nuvreon,\n\nI am interested in exploring partnership opportunities.\n\nCompany: \nName: \nRole: \n\nBrief description of collaboration interest:\n\n",
+          ko: "안녕하세요 Nuvreon,\n\n파트너십 협업 기회에 관심이 있어 연락드립니다.\n\n회사명: \n성함: \n직책: \n\n협업 관심 분야:\n\n",
+        },
       },
       {
         title: { en: "Investor Relations", ko: "투자 문의" },
         desc: {
           en: "Learn about our growth trajectory, market opportunity, and corporate roadmap.",
           ko: "성장 전략, 시장 기회, 사업 로드맵에 대해 안내드립니다.",
+        },
+        subject: { en: "[Investment] Investor Inquiry", ko: "[투자] 투자 문의" },
+        body: {
+          en: "Hello Nuvreon,\n\nI would like to learn more about investment opportunities.\n\nName: \nOrganization: \n\nArea of interest:\n\n",
+          ko: "안녕하세요 Nuvreon,\n\n투자 기회에 대해 자세히 알고 싶습니다.\n\n성함: \n소속: \n\n관심 분야:\n\n",
         },
       },
       {
@@ -362,12 +372,22 @@ export const content = {
           en: "Discuss custom deployment of our intelligence platforms for your organization.",
           ko: "조직에 맞는 지능형 플랫폼 맞춤 도입을 상담합니다.",
         },
+        subject: { en: "[Enterprise] Solution Inquiry", ko: "[기업] 솔루션 도입 문의" },
+        body: {
+          en: "Hello Nuvreon,\n\nWe are interested in deploying your intelligence platform.\n\nCompany: \nName: \nRole: \n\nUse case / requirements:\n\n",
+          ko: "안녕하세요 Nuvreon,\n\n지능형 플랫폼 도입에 관심이 있습니다.\n\n회사명: \n성함: \n직책: \n\n활용 목적 / 요구사항:\n\n",
+        },
       },
       {
         title: { en: "Global Expansion", ko: "글로벌 진출" },
         desc: {
           en: "Connect with us about international market entry and strategic partnerships.",
           ko: "해외 시장 진출과 전략적 제휴에 관해 논의합니다.",
+        },
+        subject: { en: "[Global] Market Entry Inquiry", ko: "[글로벌] 해외 진출 문의" },
+        body: {
+          en: "Hello Nuvreon,\n\nI am reaching out regarding international market opportunities.\n\nName: \nOrganization: \nRegion of interest: \n\nDetails:\n\n",
+          ko: "안녕하세요 Nuvreon,\n\n해외 시장 관련 기회에 대해 논의하고 싶습니다.\n\n성함: \n소속: \n관심 지역: \n\n상세 내용:\n\n",
         },
       },
     ],

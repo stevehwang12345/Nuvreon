@@ -18,6 +18,9 @@ function getInitialLang(): Lang {
   if (typeof window === "undefined") return "en";
   const stored = localStorage.getItem("nuvreon-lang");
   if (stored === "en" || stored === "ko") return stored;
+  // Detect browser locale: default to Korean for Korean users
+  const browserLang = navigator.language || "";
+  if (browserLang.startsWith("ko")) return "ko";
   return "en";
 }
 
