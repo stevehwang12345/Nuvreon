@@ -1,10 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import { useLang } from "@/contexts/LanguageContext";
 import { content } from "@/lib/content";
-import OptionalImage from "./OptionalImage";
 
 export default function VisionSection() {
   const { lang } = useLang();
@@ -15,7 +13,7 @@ export default function VisionSection() {
       <div className="section-divider mb-32" />
       <div className="max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left: Visual */}
+          {/* Left: YouTube Video */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -23,34 +21,14 @@ export default function VisionSection() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-border">
-              <OptionalImage
-                src="/images/vision.jpg"
-                alt="Vision"
-                fill
-                className="object-cover opacity-50"
+            <div className="relative aspect-video rounded-2xl overflow-hidden border border-border">
+              <iframe
+                src="https://www.youtube.com/embed/-Aod47WJtLg?autoplay=1&mute=1&loop=1&playlist=-Aod47WJtLg"
+                title="Nuvreon Vision"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="absolute inset-0 w-full h-full"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-
-              {/* Flow diagram overlay */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="flex items-center gap-4">
-                  {[
-                    { en: "Digital", ko: "디지털" },
-                    { en: "Adaptive", ko: "적응형" },
-                    { en: "Operational", ko: "운영" },
-                  ].map((label, i) => (
-                    <div key={i} className="flex items-center gap-4">
-                      <div className="px-4 py-2 rounded-lg bg-surface/80 border border-border backdrop-blur-sm text-sm font-medium">
-                        {label[lang]}
-                      </div>
-                      {i < 2 && (
-                        <ArrowRight size={16} className="text-accent/50" />
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
             </div>
           </motion.div>
 
