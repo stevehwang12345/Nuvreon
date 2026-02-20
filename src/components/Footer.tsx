@@ -1,0 +1,39 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useLang } from "@/contexts/LanguageContext";
+import { content, t } from "@/lib/content";
+
+export default function Footer() {
+  const { lang } = useLang();
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const c = content.footer;
+
+  const resolveHref = (href: string) => {
+    if (href.startsWith("/")) return href;
+    return isHome ? href : `/${href}`;
+  };
+
+  return (
+    <footer className="border-t border-border py-10 px-6">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="text-sm text-muted">
+          &copy; {new Date().getFullYear()} {c.rights[lang]}
+        </div>
+        <div className="flex items-center gap-6 text-sm text-muted">
+          {c.links.map((link) => (
+            <Link
+              key={link.href}
+              href={resolveHref(link.href)}
+              className="hover:text-foreground transition-colors"
+            >
+              {t(link.label, lang)}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </footer>
+  );
+}
