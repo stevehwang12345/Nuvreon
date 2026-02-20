@@ -12,11 +12,24 @@ export async function POST(req: Request) {
       );
     }
 
+    const smtpUser = process.env.SMTP_USER;
+    const smtpPass = process.env.SMTP_PASS;
+
+    if (!smtpUser || !smtpPass) {
+      console.error("Missing SMTP credentials:", { user: !!smtpUser, pass: !!smtpPass });
+      return NextResponse.json(
+        { error: "Email service is not configured." },
+        { status: 500 }
+      );
+    }
+
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
       auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
+        user: smtpUser,
+        pass: smtpPass,
       },
     });
 
@@ -31,7 +44,7 @@ export async function POST(req: Request) {
     const subject = `[Nuvreon] ${categoryLabels[category] || "Inquiry"} from ${name}`;
 
     await transporter.sendMail({
-      from: `"Nuvreon Website" <${process.env.SMTP_USER}>`,
+      from: `"Nuvreon Website" <${smtpUser}>`,
       to: "sp.hwang@hantech.io",
       replyTo: email,
       subject,
@@ -51,9 +64,10 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error("Email send error:", error);
+    const errMsg = error instanceof Error ? error.message : String(error);
+    console.error("Email send error:", errMsg);
     return NextResponse.json(
-      { error: "Failed to send email. Please try again later." },
+      { error: "Failed to send email. Please try again later.", detail: errMsg },
       { status: 500 }
     );
   }
