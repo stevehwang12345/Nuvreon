@@ -4,7 +4,29 @@ import { motion } from "framer-motion";
 import { ArrowDown, ChevronRight } from "lucide-react";
 import { useLang } from "@/contexts/LanguageContext";
 import { content } from "@/lib/content";
-import OptionalImage from "./OptionalImage";
+import ParticleBackground from "./ParticleBackground";
+
+const brandName = "Nuvreon";
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const letterVariants = {
+  hidden: { opacity: 0, y: 40, filter: "blur(8px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.5, ease: "easeOut" as const },
+  },
+};
 
 export default function HeroSection() {
   const { lang } = useLang();
@@ -13,23 +35,14 @@ export default function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden grid-bg">
-      {/* Optional background image */}
-      <div className="absolute inset-0">
-        <OptionalImage
-          src="/images/hero-bg.jpg"
-          alt=""
-          fill
-          priority
-          className="object-cover opacity-20"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
-      </div>
-
       {/* Background gradient orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-[128px]" />
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-600/5 rounded-full blur-[128px]" />
       </div>
+
+      {/* Particle burst animation */}
+      <ParticleBackground />
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
         <motion.div
@@ -42,15 +55,31 @@ export default function HeroSection() {
           {c.tag[lang]}
         </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight mb-6"
+        {/* Animated brand name */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-4"
         >
-          {h.line1}{" "}
-          <span className="gradient-text">{h.highlight1}</span>
-          <br />
+          {brandName.split("").map((letter, i) => (
+            <motion.span
+              key={i}
+              variants={letterVariants}
+              className={i === 0 ? "text-accent inline-block" : "inline-block"}
+            >
+              {letter}
+            </motion.span>
+          ))}
+        </motion.div>
+
+        {/* Subtitle */}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.1 }}
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6"
+        >
           {h.line2}{" "}
           <span className="gradient-text">{h.highlight2}</span>
         </motion.h1>
@@ -58,7 +87,7 @@ export default function HeroSection() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.8, delay: 1.4 }}
           className="text-lg md:text-xl text-muted max-w-3xl mx-auto mb-12 leading-relaxed"
         >
           {c.subtext[lang]}
@@ -67,7 +96,7 @@ export default function HeroSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          transition={{ duration: 0.8, delay: 1.6 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <a
@@ -92,7 +121,7 @@ export default function HeroSection() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
+        transition={{ delay: 2, duration: 1 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <motion.div

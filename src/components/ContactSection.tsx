@@ -65,7 +65,7 @@ export default function ContactSection() {
             {c.cards.map((card, i) => (
               <motion.a
                 key={i}
-                href="mailto:contact@nuvreon.com"
+                href="mailto:sp.hwang@hantech.io"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

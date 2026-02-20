@@ -56,15 +56,15 @@ export default function AboutSection() {
               ))}
             </div>
 
-            {/* Optional about image */}
-            <div className="relative rounded-xl overflow-hidden aspect-video border border-border">
-              <OptionalImage
-                src="/images/about.jpg"
-                alt="Nuvreon"
-                fill
-                className="object-cover"
+            {/* Company intro video */}
+            <div className="relative rounded-xl overflow-hidden aspect-video border border-border bg-black">
+              <iframe
+                src="https://www.youtube.com/embed/LV5nDa7LOU4?autoplay=1&mute=1&loop=1&playlist=LV5nDa7LOU4&rel=0&controls=0&showinfo=0&modestbranding=1"
+                title="Nuvreon Intro"
+                allow="autoplay; encrypted-media"
+                allowFullScreen
+                className="absolute inset-0 w-full h-full"
               />
-              <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-surface to-background" />
             </div>
           </div>
 

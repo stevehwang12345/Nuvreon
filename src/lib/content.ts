@@ -2,7 +2,21 @@ export const content = {
   nav: {
     links: [
       { label: { en: "About", ko: "회사 소개" }, href: "#about" },
-      { label: { en: "Services", ko: "서비스" }, href: "#services" },
+      {
+        label: { en: "Services", ko: "서비스" },
+        href: "#services",
+        children: {
+          core: { label: { en: "Core Products", ko: "핵심 제품" }, items: [
+            { label: { en: "Influlyze", ko: "Influlyze" }, href: "/services/influlyze", desc: { en: "Influencer Analytics SaaS", ko: "인플루언서 분석 SaaS" } },
+            { label: { en: "Robot Labeling", ko: "로봇 라벨링" }, href: "/services/robot-labeling", desc: { en: "Robot Control Platform", ko: "로봇 관제 플랫폼" } },
+            { label: { en: "OnForAll", ko: "OnForAll" }, href: "/services/onforall", desc: { en: "Synthetic Data Platform", ko: "합성 데이터 플랫폼" } },
+          ]},
+          side: { label: { en: "Side Projects", ko: "사이드 프로젝트" }, items: [
+            { label: { en: "Keyranki", ko: "Keyranki" }, href: "/services/keyranki", desc: { en: "Trending Keyword Aggregator", ko: "인기 키워드 통합" } },
+            { label: { en: "GachaWorld", ko: "가챠월드" }, href: "/services/gacha-world", desc: { en: "Gacha Shop Finder", ko: "가챠샵 찾기" } },
+          ]},
+        },
+      },
       { label: { en: "Technology", ko: "기술" }, href: "/technology" },
       { label: { en: "Vision", ko: "비전" }, href: "#vision" },
       { label: { en: "Contact", ko: "연락처" }, href: "#contact" },
@@ -17,20 +31,20 @@ export const content = {
     },
     headline: {
       en: {
-        line1: "AI Software Infrastructure",
-        highlight1: "for Intelligent",
-        line2: "",
-        highlight2: "Operations",
+        line1: "uvreon",
+        highlight1: "",
+        line2: "AI Software Infrastructure for",
+        highlight2: "Intelligent Operations",
       },
       ko: {
-        line1: "지능형 운영을 위한",
-        highlight1: "AI 소프트웨어",
-        line2: "",
-        highlight2: "인프라",
+        line1: "uvreon",
+        highlight1: "",
+        line2: "지능형 운영을 위한",
+        highlight2: "AI 소프트웨어 인프라",
       },
     },
     subtext: {
-      en: "Nuvreon builds scalable software platforms that transform data into intelligent operational systems across digital and physical environments.",
+      en: "We builds scalable software platforms that transform data into intelligent operational systems across digital and physical environments.",
       ko: "디지털과 물리 환경 전반에서 데이터를 지능형 운영 시스템으로 전환하는 확장 가능한 소프트웨어 플랫폼을 구축합니다.",
     },
     cta1: { en: "Explore Our Services", ko: "서비스 살펴보기" },
@@ -117,32 +131,17 @@ export const content = {
       ko: { text: "확장 가능한 지능형", highlight: "서비스" },
     },
     desc: {
-      en: "Five software services, each solving a distinct challenge across the intelligence and consumer stack.",
-      ko: "각기 다른 영역의 과제를 해결하는 다섯 가지 소프트웨어 서비스.",
+      en: "Core products and exploratory projects across the intelligence and consumer stack.",
+      ko: "지능형 시스템과 소비자 영역을 아우르는 핵심 제품과 탐색 프로젝트.",
     },
+    coreLabel: { en: "CORE PRODUCTS", ko: "핵심 제품" },
+    sideLabel: { en: "SIDE PROJECTS", ko: "사이드 프로젝트" },
     items: [
       {
         number: "01",
-        slug: "keyranki",
-        title: {
-          en: "Real-Time Trending Keyword Aggregator",
-          ko: "실시간 인기 키워드 통합 플랫폼",
-        },
-        product: "Keyranki",
-        purpose: {
-          en: "Track real-time popular keywords across 5 search engines in one place.",
-          ko: "5개 검색 엔진의 실시간 인기 키워드를 한눈에 추적합니다.",
-        },
-        features: [
-          { en: "Real-time trending keyword aggregation", ko: "실시간 인기 키워드 통합" },
-          { en: "Multi-engine coverage (Google, Naver, Daum, Nate, Zum)", ko: "다중 검색 엔진 지원 (구글, 네이버, 다음, 네이트, 줌)" },
-          { en: "Keyword ranking & movement tracking", ko: "키워드 순위 및 변동 추적" },
-          { en: "Treemap visualization & comparative analytics", ko: "트리맵 시각화 및 비교 분석" },
-        ],
-      },
-      {
-        number: "02",
         slug: "influlyze",
+        image: "/images/service-02.png",
+        category: "core" as const,
         title: {
           en: "Influencer Analytics SaaS",
           ko: "인플루언서 분석 SaaS",
@@ -160,8 +159,10 @@ export const content = {
         ],
       },
       {
-        number: "03",
+        number: "02",
         slug: "robot-labeling",
+        image: "/images/service-03.png",
+        category: "core" as const,
         title: {
           en: "Robot Labeling & Control Platform",
           ko: "로봇 라벨링 및 관제 플랫폼",
@@ -179,8 +180,10 @@ export const content = {
         ],
       },
       {
-        number: "04",
+        number: "03",
         slug: "onforall",
+        image: "/images/service-04.png",
+        category: "core" as const,
         title: {
           en: "Synthetic Data Platform for AI Training",
           ko: "AI 학습용 합성 데이터 플랫폼",
@@ -198,8 +201,31 @@ export const content = {
         ],
       },
       {
+        number: "04",
+        slug: "keyranki",
+        image: "/images/service-01.png",
+        category: "side" as const,
+        title: {
+          en: "Real-Time Trending Keyword Aggregator",
+          ko: "실시간 인기 키워드 통합 플랫폼",
+        },
+        product: "Keyranki",
+        purpose: {
+          en: "Track real-time popular keywords across 5 search engines in one place.",
+          ko: "5개 검색 엔진의 실시간 인기 키워드를 한눈에 추적합니다.",
+        },
+        features: [
+          { en: "Real-time trending keyword aggregation", ko: "실시간 인기 키워드 통합" },
+          { en: "Multi-engine coverage (Google, Naver, Daum, Nate, Zum)", ko: "다중 검색 엔진 지원 (구글, 네이버, 다음, 네이트, 줌)" },
+          { en: "Keyword ranking & movement tracking", ko: "키워드 순위 및 변동 추적" },
+          { en: "Treemap visualization & comparative analytics", ko: "트리맵 시각화 및 비교 분석" },
+        ],
+      },
+      {
         number: "05",
         slug: "gacha-world",
+        image: "/images/service-05.png",
+        category: "side" as const,
         title: {
           en: "Location-Based Gacha Shop Finder",
           ko: "위치 기반 가챠샵 찾기 서비스",
@@ -312,7 +338,7 @@ export const content = {
       },
       {
         label: { en: "Email", ko: "이메일" },
-        value: "contact@nuvreon.com",
+        value: "sp.hwang@hantech.io",
       },
     ],
     cards: [
@@ -357,6 +383,8 @@ export const content = {
       { label: { en: "Services", ko: "서비스" }, href: "#services" },
       { label: { en: "Contact", ko: "연락처" }, href: "#contact" },
     ],
+    youtube: "https://www.youtube.com/@Nuvreon-official",
+    email: "sp.hwang@hantech.io",
   },
 
   serviceDetails: {

@@ -123,15 +123,34 @@ function ServiceDetailContent() {
           </motion.div>
         </div>
 
-        {/* Hero image */}
-        <div className="relative max-w-5xl mx-auto mt-12 h-64 md:h-80 rounded-2xl overflow-hidden">
-          <OptionalImage
-            src={`/images/service-0${serviceIndex + 1}.jpg`}
-            alt={service.title[lang]}
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+        {/* Hero image - Browser mockup */}
+        <div className="max-w-5xl mx-auto mt-12">
+          <div className={`rounded-xl overflow-hidden border border-white/10 shadow-2xl ${style.glow}`}>
+            <div className="flex items-center gap-2 px-4 py-2.5 bg-[#1a1a2e] border-b border-white/5">
+              <div className="flex gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
+                <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
+                <span className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
+              </div>
+              <div className="flex-1 mx-3">
+                <div className="flex items-center gap-2 px-3 py-1 rounded-md bg-white/5 max-w-xs">
+                  <div className={`w-1.5 h-1.5 rounded-full ${style.accent.replace('text-', 'bg-')}`} />
+                  <span className="text-[10px] text-white/30 font-mono truncate">
+                    {t(service.product, lang) || service.title[lang]}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="relative aspect-[16/9] bg-[#0a0a1a]">
+              <OptionalImage
+                src={service.image}
+                alt={service.title[lang]}
+                fill
+                className="object-cover object-top"
+              />
+              <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#0a0a1a] to-transparent" />
+            </div>
+          </div>
         </div>
       </section>
 
